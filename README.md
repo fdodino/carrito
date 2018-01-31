@@ -106,36 +106,24 @@ El archivo [.travis.yml](./.travis.yml) lo podés copiar de este repositorio.
 
 ### Modelar los productos
 
-La leche, el queso y la miel, se pueden representar
-
-- con valores
-- con objetos javascript que tienen el precio como comportamiento
-
-Como se repite la multiplicación cantidad * precio, generamos una función calcularTotal para tener en un solo lugar la definición del cálculo.
+La leche, el queso y la miel, se representan con clases porque tienen comportamiento diferente.
+Para reutilizar el valor del precio total (cantidad * precio unitario), en lugar de una función común hacemos que hereden Leche, Queso y Miel de una clase más general Producto, donde la definición del cálculo queda representada en un solo lugar.
 
 ### Modelar el carrito
 
-El carrito se podría representar con
+El carrito se representa como instancia de una clase Carrito, que tiene un cliente y una lista de ítems, que abstraen
 
-- un número, el valor final a pagar
-- o bien con una lista de cantidad/producto, que permite registrar más información y saber si llevé 1 ó 2 sachets de leche.
+- cantidad
+- y producto.
+
 
 ### Calcular el total de un carrito
 
-Hay muchas variantes, en un esquema imperativo/funcional tenemos una función que calcula el total a pagar de un carrito, que termina siendo una estructura de datos pasiva.
+Para calcular el total de un carrito, delegamos en cada ítem que a su vez deja que cada producto lo resuelva.
 
-## Esta solución
-
-En la solución que presentamos a continuación, vemos que 
-
-- la leche, el queso y la miel son **funciones** (closures), que dada una marca y una cantidad nos dicen el precio total. Este esquema tiene limitaciones (no permite trabajar otros cálculos, como la ganancia neta o el stock de un producto, tampoco es fácil saber si un carrito contiene leche o queso), pero es simpática para introducir la programación funcional en Javascript.
-
-- por lo tanto, el carrito se conforma con una lista de productos que consiste en aplicar las funciones leche, queso y miel con una marca y una cantidad
+TODO: Diagrama de clases y de secuencia.
 
 ## Tests
 
 Los tests están en la carpeta spec y prueban unitariamente el queso, la leche y el valor total de un carrito.
 
-## Pasos futuros
-
-En el próximo branch vamos a modelar una solución más orientada a objetos, bastante diferente.

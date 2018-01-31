@@ -6,15 +6,22 @@ class Producto {
         return this.precioUnitario(cantidad) * cantidad
     }
 }
-class Leche {
+
+class Leche extends Producto {
     precioUnitario(cantidad) {
         return (cantidad > 10) ? 5 : 10
     }
 }
 
-class Queso {
+class Queso extends Producto {
     precioUnitario(cantidad) {
         return 50
+    }
+}
+
+class Miel extends Producto {
+    precioUnitario(cantidad) {
+        return (this.marca === 'Real') ? 20 : 15
     }
 }
 
@@ -34,13 +41,13 @@ class Carrito {
         this.cliente = cliente
     }
     agregarItem(cantidad, producto) {
-        this.items.add(new Item(cantidad, producto))
+        this.items.push(new Item(cantidad, producto))
     }
     cantidadProductos() {
         return this.items.length
     }
-    totalAPagar(carrito) {
-        return this.items.reduce((total, item) => total + item.precioTotal())
+    totalAPagar() {
+        return this.items.reduce((total, item) => total + item.precioTotal(), 0)
     }
 }
 
