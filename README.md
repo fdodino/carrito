@@ -7,8 +7,10 @@ Queremos programar un almacén, que vende 3 tipos de productos: Leche, Queso y M
 Los cálculos de precios son los siguientes:
 
 > **Leche** = si compra por cantidad (más de 10 unidades) el precio unitario es 5, de lo contrario sale 10
- **Queso** = todos valen 50 pesos por unidad
- **Miel** = la miel "Real" sale 20 pesos por unidad, las otras salen 15
+
+> **Queso** = todos valen 50 pesos por unidad
+
+> **Miel** = la miel "Real" sale 20 pesos por unidad, las otras salen 15
 
 ## Qué necesitamos para comenzar a trabajar
 
@@ -102,3 +104,38 @@ El archivo [.travis.yml](./.travis.yml) lo podés copiar de este repositorio.
 
 ## Ahora sí, ¡a modelar el carrito!
 
+### Modelar los productos
+
+La leche, el queso y la miel, se pueden representar
+
+- con valores
+- con objetos javascript que tienen el precio como comportamiento
+
+Como se repite la multiplicación cantidad * precio, generamos una función calcularTotal para tener en un solo lugar la definición del cálculo.
+
+### Modelar el carrito
+
+El carrito se podría representar con
+
+- un número, el valor final a pagar
+- o bien con una lista de cantidad/producto, que permite registrar más información y saber si llevé 1 ó 2 sachets de leche.
+
+### Calcular el total de un carrito
+
+Hay muchas variantes, en un esquema imperativo/funcional tenemos una función que calcula el total a pagar de un carrito, que termina siendo una estructura de datos pasiva.
+
+## Esta solución
+
+En la solución que presentamos a continuación, vemos que 
+
+- la leche, el queso y la miel son **funciones** (closures), que dada una marca y una cantidad nos dicen el precio total. Este esquema tiene limitaciones (no permite trabajar otros cálculos, como la ganancia neta o el stock de un producto, tampoco es fácil saber si un carrito contiene leche o queso), pero es simpática para introducir la programación funcional en Javascript.
+
+- por lo tanto, el carrito se conforma con una lista de productos que consiste en aplicar las funciones leche, queso y miel con una marca y una cantidad
+
+## Tests
+
+Los tests están en la carpeta spec y prueban unitariamente el queso, la leche y el valor total de un carrito.
+
+## Pasos futuros
+
+En el próximo branch vamos a modelar una solución más orientada a objetos, bastante diferente.
