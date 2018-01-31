@@ -28,19 +28,25 @@ $ npm init                    -- crea el archivo package.json contestando alguna
 
 Una vez creado el archivo package.json podemos
 
-- copiar la definición de este repositorio
-- o manualmente bajarnos las dependencias con npm
+- copiar la definición de este repositorio y ejecutar el comando que descarga las dependencias
 
 ```bash
-$ npm i babel-cli --save-dev
-$ npm i babel-preset-es2015 --save-dev
-$ npm i jasmine-core --save-dev
-$ npm i karma --save-dev
-$ npm i karma-babel-preprocessor --save-dev
-$ npm i -g karma-cli --save-dev                -- instala globalmente el cliente karma para correrlo por consola
-$ npm i karma-jasmine --save-dev
-$ npm i karma-phantomjs-launcher --save-dev
+npm install
 ```
+
+- o manualmente bajarnos las dependencias con guardándolas al package.json
+
+```bash
+$ npm install babel-cli babel-preset-es2015 jasmine-core karma karma-babel-preprocessor karma-jasmine karma-phantomjs-launcher
+--save-dev   
+```
+
+En cualquiera de los dos casos conviene instalar el cliente karma:
+
+```bash
+$ npm i karma-cli -g  -- instala globalmente el cliente karma para correrlo por consola
+``` 
+
 
 Además vamos a incorporar esta línea:
 
