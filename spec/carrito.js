@@ -1,18 +1,26 @@
 describe('clientes', () => {
-  
+
+    const carritoJuan = new Carrito('Juan')
+    const quesoLaPaulina = new Queso("La Paulina", 1)
+    const itemQuesoLaPaulina = new Item(1, quesoLaPaulina)
+    let itemLecheSerenisima = new Item(2, new Leche("La Serenisima"))
+
     beforeEach(() => {
+        carritoJuan.agregarItem(2, new Leche("La Serenisima"))
+        carritoJuan.agregarItem(1, new Queso("La Paulina"))
     })
   
     it('cualquier queso sale 50', () => {
-        expect(50).toBe(queso("La Paulina", 1))
+        expect(50).toBe(itemQuesoLaPaulina.precioTotal())
     })
 
     it('2 sachets de leche cuestan 20', () => {
-        expect(20).toBe(leche("La Serenísima", 2))
+        expect(20).toBe(itemLecheSerenisima)
     })
 
     it('12 sachets de leche cuestan 60', () => {
-        expect(60).toBe(leche("La Serenísima", 12))
+        itemLecheSerenisima.cantidad = 22
+        expect(60).toBe(itemLecheSerenisima.precioTotal())
     })
 
     /** enviando un mensaje a un objeto carritoJuan. De esta manera nuestro código es más OO. */
@@ -24,7 +32,7 @@ describe('clientes', () => {
      * De esta manera nuestro código es más funcional o imperativo
      */
     it('total a pagar del carrito es 70', () => {
-        expect(70).toBe(totalAPagar(carritoJuan))
+        expect(70).toBe(carritoJuan.totalAPagar())
     })
     
 })

@@ -1,25 +1,46 @@
-/** Podemos construir funciones y asignarlas a referencias así... */
-const leche = (marca, cantidad) => calcularTotal(cantidad, (cantidad > 10) ? 5 : 10)
-
-const queso = (marca, cantidad) => calcularTotal(cantidad, 50)
-
-/** ...o bien definir funciones como en Javascript 5 */
-function calcularTotal(cantidad, precioUnitario) {
-    return cantidad * precioUnitario
+class Producto {
+    constructor(marca) {
+        this.marca = marca
+    }
+    precioTotal(cantidad) {
+        return this.precioUnitario(cantidad) * cantidad
+    }
 }
-
-/** Las referencias también pueden apuntar a objetos, como el carrito de Juan\
- */
-const carritoJuan = {
-    /* normalmente los objetos suelen tener atributos... */
-    cliente: 'Juan',
-    productos: [ leche("La Serenisima", 2), queso("La Paulina", 1)],
-    /* ... y comportamiento */
-    cantidadProductos() {
-        return this.productos.length
+class Leche {
+    precioUnitario(cantidad) {
+        return (cantidad > 10) ? 5 : 10
     }
 }
 
-function totalAPagar(carrito) {
-    return carrito.productos.reduce((total, linea) => total + linea)
+class Queso {
+    precioUnitario(cantidad) {
+        return 50
+    }
 }
+
+class Item {
+    constructor(cantidad, producto) {
+        this.cantidad = cantidad
+        this.producto = producto
+    }
+    precioTotal() {
+        return this.producto.precioTotal(this.cantidad)
+    }
+}
+
+class Carrito {
+    constructor(cliente) {
+        this.items = []
+        this.cliente = cliente
+    }
+    agregarItem(cantidad, producto) {
+        this.items.add(new Item(cantidad, producto))
+    }
+    cantidadProductos() {
+        return this.items.length
+    }
+    totalAPagar(carrito) {
+        return this.items.reduce((total, item) => total + item.precioTotal())
+    }
+}
+
