@@ -116,12 +116,13 @@ El carrito se representa como instancia de una clase Carrito, que tiene un clien
 - cantidad
 - y producto.
 
+## Diagrama de clases de la solución
+
+![diagrama_clases](img/introES6Carrito.png)
 
 ### Calcular el total de un carrito
 
 Para calcular el total de un carrito, delegamos en cada ítem que a su vez deja que cada producto lo resuelva.
-
-![diagrama_clases](img/introES6Carrito.png)
 
 TODO: Diagrama de secuencia.
 
