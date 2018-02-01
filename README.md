@@ -37,6 +37,7 @@ Para calcular el total de un carrito, delegamos en cada ítem que a su vez deja 
 
 ![diagrama_clases](img/introES6CarritoSecuencia.png)
 
+Ya no hay funciones sueltas, ni lambdas referenciando a variables. Todo el comportamiento parte de un objeto, que por un lado es más ordenado pero por otro es más burocrático (fíjense en los tests que aumentan las líneas para generar un juego de datos que pruebe la solución).
 
 ## Tests
 
